@@ -1,27 +1,18 @@
 clc ;
 load .\DataSet\xsdata_v1.mat
-load .\DataSet\xsdata_v1.mat
-load .\DataSet\xsdata_v1.mat
-% load .\DataSet\monthxsdata_v1.mat
-% load .\DataSet\monthxsdata_v2.mat
-% load .\DataSet\monthxsdata_v3.mat
-% load .\DataSet\yearxsdata_v1.mat
-% load .\DataSet\yearxsdata_v2.mat
-% load .\DataSet\yearxsdata_v3.mat
+load .\DataSet\xsdata_v2.mat
+load .\DataSet\xsdata_v3.mat
 
-saveMatName = '.\report\xsdata_v1MV_MK_MHKS.mat';
+saveMatName = '.\report\xsdata_MV_MK_MHKS.mat';
 
 % warning off ;
-totalCycle = 5; %5ÂÖ
+totalCycle = 5; %5è½®
 [train1,test1]=divide(xsdata_v1,index1,index2,totalCycle);
 [train2,test2]=divide(xsdata_v2,index1,index2,totalCycle);
 [train3,test3]=divide(xsdata_v3,index1,index2,totalCycle);
-% [train1,test1]=divide(yearxsdata_v1,index1,index2,totalCycle);
-% [train2,test2]=divide(yearxsdata_v2,index1,index2,totalCycle);
-% [train3,test3]=divide(yearxsdata_v3,index1,index2,totalCycle);
 
-%ÊÓ½ÇÊı
-inputInf.V = 1;
+%è§†è§’æ•°
+inputInf.V = 3;
 V = inputInf.V;
 train = cell(inputInf.V,1);
 test = cell(inputInf.V,1);
@@ -32,8 +23,8 @@ test{1} = test1;
 test{2} = test2;
 test{3} = test3;
 
-totalClass = size(train{1}, 2); %¼¸ÀàÎÊÌâ
-dim = size(train{1}{1}, 2); %ÌØÕ÷Î¬¶È
+totalClass = size(train{1}, 2); %å‡ ç±»é—®é¢˜
+dim = size(train{1}{1}, 2); %ç‰¹å¾ç»´åº¦
 finalRecord = [] ;
 
 inputInf.filteTime = 3;
@@ -81,8 +72,8 @@ for i_c3 = 1:length(CC3)
         fprintf('The %d cycle---:TP_rate,TN_rate,MACC,GM,F1,t_train\n %f,%f,%f,%f,%f,%f\n', i_cv, res(i_cv, : ));
     end;
 
-    resMean(1 ,1 :6) = mean(res, 1); %Ôö¼ÓÒ»ĞĞ¼ÇÂ¼Ã¿¸öÖ¸±êµÄ¾ùÖµ
-    resMean(1 , 7:12) = std(res(1:totalCycle , :)) ; %Ôö¼ÓÒ»ĞĞ¼ÇÂ¼Ã¿¸öÖ¸±êµÄ±ê×¼²î
+    resMean(1 ,1 :6) = mean(res, 1); %å¢åŠ ä¸€è¡Œè®°å½•æ¯ä¸ªæŒ‡æ ‡çš„å‡å€¼
+    resMean(1 , 7:12) = std(res(1:totalCycle , :)) ; %å¢åŠ ä¸€è¡Œè®°å½•æ¯ä¸ªæŒ‡æ ‡çš„æ ‡å‡†å·®
     resMean(1, 13:16) = [C1, C2, C3,inputInf.M] ;   %cl  lamda  gama ker
  
     %savedObj.FinalRes = res;
