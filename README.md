@@ -1,5 +1,5 @@
 # MVE-EK
-Multi-view Ensemble Learning with Empirical Kernel for Heart Failure Mortality Prediction
+code of Multi-view Ensemble Learning with Empirical Kernel for Heart Failure Mortality Prediction
 
 The code is developed under Matlab 2015b
 
